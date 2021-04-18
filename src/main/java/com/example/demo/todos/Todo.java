@@ -1,13 +1,22 @@
 package com.example.demo.todos;
 
+import lombok.NonNull;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class Todo {
-    private int id;
+
+    @Id
+    private String id;
+
+    @NonNull
     private String title;
     private  String  description;
 
     public Todo(){ }
 
-    public Todo( int id, String title,String description) {
+    public Todo( String id, String title,String description) {
         this.title = title;
         this.id = id;
         this.description = description;
@@ -17,7 +26,7 @@ public class Todo {
         return title;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -25,7 +34,7 @@ public class Todo {
         this.title = title;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
