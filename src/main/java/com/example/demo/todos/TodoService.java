@@ -28,12 +28,11 @@ public class TodoService {
 
     public Todo findById(String id) {
         try {
-            todoRepository.findById(id);
+            return todoRepository.findById(id).get();
         } catch (Exception e) {
             throw new NotFoundException("No record ID was found");
         }
 
-        return null;
     }
 
     public Todo save(Todo todo) {

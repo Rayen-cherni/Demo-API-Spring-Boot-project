@@ -29,12 +29,12 @@ public class TodoController {
     //@GetMapping(value = {"", "/"})
     //    public ResponseEntity<List<Todo>> getAllTodo() {
     //        List<Todo> result = todoService.findAll();
-        //return new ResponseEntity<List<Todo>>(result,HttpStatus.OK);
+    //return new ResponseEntity<List<Todo>>(result,HttpStatus.OK);
     //    }
 
 
     @GetMapping(value = "/{id}")
-    public Todo getTodoById(@PathVariable int id) {
+    public Todo getTodoById(@PathVariable String id) {
         return todoService.findById(id);
     }
     //@GetMapping(value = "/{id}")
@@ -48,21 +48,20 @@ public class TodoController {
     //*** @Validated cad va faire une controle sur les validateurs de cette classe
     @PostMapping(value = "/createNewTodo")
     public Todo createNewTodo(@Validated @RequestBody Todo todo) {
-        if (todoService.save(todo)) {
-            return todo;
-        } else {
-            return null;
-        }
+
+        todoService.save(todo);
+        return todo;
+
     }
     //**** Dans ce cas, on va retouner une reponse configurable *******
     //@PostMapping(value = "/createNewTodo")
     //public ResponseEntity<Todo> createNewTodo(@Validated @RequestBody Todo todo) {
-     // Todo result = todoService.save(todo);
+    // Todo result = todoService.save(todo);
     // return new ResponseEntity<Todo>(result,HttpStatus.CREATED);
     //}
 
     @DeleteMapping(value = "/deleteTodo/{id}")
-    public void deleteTodo(@PathVariable int id){
+    public void deleteTodo(@PathVariable String id) {
         todoService.delete(id);
     }
     //public ResponseEntity<void> deleteTodo(@PathVariable int id){
