@@ -1,5 +1,9 @@
 server:
   port: 8080
+auth:
+  expiration: 604800L
+  secret: todoAPISecret123
+  header: Authorization
 
 #MongoDB Connexion
 #spring:
